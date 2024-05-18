@@ -3,7 +3,8 @@ import Login from './components/Login';
 import LoginEstudiante from './components/LoginEstudiante';
 import LoginDocente from './components/LoginDocente.jsx';
 import InicioDocente from './components/InicioDocente.jsx';
-import Header from './components/Header.jsx';
+import InicioEstudiante from './components/InicioEstudiante.jsx';
+
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
                     <Route path="/loginEstudiante" element={<LoginEstudiante />} />
                     <Route path="/loginDocente" element={<LoginDocente />} />
                     <Route path="/inicioDocente" element={<InicioDocente />} />
-
+                    <Route path="/inicioEstudiante/:studentId" element={<InicioEstudiante />} />
                 </Routes>
             </div>
         </BrowserRouter>

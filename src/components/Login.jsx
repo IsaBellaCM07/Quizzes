@@ -40,7 +40,7 @@ const Login = () => {
                 </div>
             </div>
             <div className="login-text">
-                <h2>Somos más que una plataforma educativa</h2>
+                <h2 className="text">Somos más que una plataforma educativa</h2>
                 <p>Te ofrecemos una solución integral para la creación, administración y evaluación de exámenes en línea, brindando herramientas tanto para docentes como para estudiantes, y facilitando el seguimiento y análisis del rendimiento académico.</p>
             </div>
         </div>

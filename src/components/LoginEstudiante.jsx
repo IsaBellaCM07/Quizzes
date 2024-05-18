@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi'; // Importa el ícono de la flecha izquierda
-import '../styles/LoginEstudianteStyle.css'; // Importa el archivo CSS para el estilo
+import { FiArrowLeft } from 'react-icons/fi';
+import '../styles/LoginEstudianteStyle.css';
 
 const LoginEstudiante = () => {
     const [estudiantes, setEstudiantes] = useState([]);
@@ -9,7 +9,6 @@ const LoginEstudiante = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Lógica para obtener estudiantes desde el backend
         const fetchData = async () => {
             try {
                 const response = await fetch('http://localhost:3001/api/estudiantes');
@@ -30,11 +29,11 @@ const LoginEstudiante = () => {
     };
 
     const handleLogin = () => {
-        // Implementa la lógica de inicio de sesión
         if (selectedStudent) {
-            navigate('/inicioEstudiante'); // Redirige al dashboard después del inicio de sesión
-        } else {
-            alert('Por favor selecciona un estudiante.'); // Muestra un mensaje de alerta si no se ha seleccionado un estudiante
+            console.log(selectedStudent.ID_ESTUDIANTE)
+            navigate(`/inicioEstudiante/${selectedStudent.ID_ESTUDIANTE}`);         }
+        else {
+            alert('Por favor selecciona un estudiante.');
         }
     };
 
@@ -42,8 +41,8 @@ const LoginEstudiante = () => {
         <div className="login-container">
             <div className="login-form">
                 <div className="login-box">
-                    <div className="back-arrow-container"> {/* Contenedor de la flecha */}
-                        <FiArrowLeft className="back-arrow" onClick={() => navigate('/login')} /> {/* Flecha izquierda con evento onClick para redirigir al login */}
+                    <div className="back-arrow-container">
+                        <FiArrowLeft className="back-arrow" onClick={() => navigate('/login')} />
                     </div>
                     <div className="text-container">
                         <h1 className="gradient-text">¿Qué estudiante eres?</h1>

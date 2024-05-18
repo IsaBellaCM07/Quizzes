@@ -30,7 +30,6 @@ const LoginEstudiante = () => {
 
     const handleLogin = () => {
         if (selectedStudent) {
-            console.log(selectedStudent.ID_ESTUDIANTE)
             navigate(`/inicioEstudiante/${selectedStudent.ID_ESTUDIANTE}`);         }
         else {
             alert('Por favor selecciona un estudiante.');

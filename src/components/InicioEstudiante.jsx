@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import '../styles/InicioEstudianteStyle.css';
 
@@ -10,6 +10,7 @@ const InicioEstudiante = () => {
     const [student, setStudent] = useState(null);
     const [exams, setExams] = useState([]);
     const [presentedExams, setPresentedExams] = useState([]);
+    const [groups, setGroups] = useState([]);
 
     useEffect(() => {
         const fetchStudentData = async () => {
@@ -21,11 +22,14 @@ const InicioEstudiante = () => {
                 const examsResponse = await fetch(`http://localhost:3001/api/examsDis/${studentId}`);
                 const examsData = await examsResponse.json();
                 setExams(examsData);
-                console.log(examsData)
 
                 const presentedExamsResponse = await fetch(`http://localhost:3001/api/examsPres/${studentId}`);
                 const presentedExamsData = await presentedExamsResponse.json();
                 setPresentedExams(presentedExamsData);
+
+                const groupsResponse = await fetch(`http://localhost:3001/api/grupos/${studentId}`);
+                const groupsResponseData = await groupsResponse.json();
+                setGroups(groupsResponseData);
 
             } catch (error) {
                 console.error('Error al obtener datos del estudiante:', error);
@@ -38,6 +42,14 @@ const InicioEstudiante = () => {
     if (!student) {
         return <div>Loading...</div>;
     }
+
+    const handleExamClick = (examId) => {
+        navigate(`/presentarExamen/${studentId}/${examId}`);
+    };
+
+    const handlePresentedExamClick = (examId) => {
+        navigate(`/informacionExamen/${studentId}/${examId}`);
+    };
 
     return (
         <div className="dashboard-container">
@@ -52,7 +64,14 @@ const InicioEstudiante = () => {
                 <h2 className="text-titles">Perfil del Estudiante</h2>
                 <p><strong>Identificación:</strong> {student.ID_ESTUDIANTE}</p>
                 <p><strong>Nombre completo:</strong> {student.NOMBRE} {student.APELLIDO}</p>
-
+                <p><strong>Grupos registrados: </strong>
+                    {groups.map((group, index) => (
+                        <span key={index}>
+                            {group.NOMBRE}
+                            {index < groups.length - 1 && ', '}
+                        </span>
+                    ))}
+                </p>
             </div>
 
             <div className="exams-section">
@@ -60,11 +79,11 @@ const InicioEstudiante = () => {
                 <p>
                     {exams.map((exam, index) => (
                         <li key={index}>
-                            <Link to={`/takeExam/${exam.ID_EXAMEN}`}>
-                                <button className="exam-button">
-                                    {exam.NOMBRE} - Iniciar Examen
-                                </button>
-                            </Link>
+                            <button
+                                className="exam-button"
+                                onClick={() => handleExamClick(exam.ID_EXAMEN)}>
+                                {exam.NOMBRE} - Presentar Examen
+                            </button>
                         </li>
                     ))}
                 </p>
@@ -75,11 +94,11 @@ const InicioEstudiante = () => {
                 <p>
                     {presentedExams.map((exam, index) => (
                         <li key={index}>
-                            <Link to={`/examResults/${exam.ID_EXAMEN}`}>
-                                <button className="exam-button">
-                                    {exam.NOMBRE} - Ver Resultados
-                                </button>
-                            </Link>
+                            <button
+                                className="exam-button"
+                                onClick={() => handlePresentedExamClick(exam.ID_EXAMEN)}>
+                                {exam.NOMBRE} - Ver Resultados
+                            </button>
                         </li>
                     ))}
                 </p>

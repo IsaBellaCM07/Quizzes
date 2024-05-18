@@ -6,6 +6,7 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #f9f9f9;
+    position: relative; /* Añadir esto para la posición de la flecha */
 }
 
 h1 {
@@ -35,10 +36,11 @@ ul {
 li {
     margin-bottom: 5px;
 }
+
 .exam-button {
-    background: linear-gradient(to right, #4CAF50, #2E7D32); /* Green gradient */
+    background: linear-gradient(to right, whitesmoke, lightgray);
     border: none;
-    color: white;
+    color: black;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
@@ -46,10 +48,47 @@ li {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background 0.3s ease; /* Add a transition for the gradient change */
 }
 
 .exam-button:hover {
-    background: linear-gradient(to right, #2E7D32, #1B5E20); /* Darker green gradient on hover */
+    background: linear-gradient(to right, whitesmoke, darkgray);
+}
+
+.text-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente, si fuera necesario */
+    background: linear-gradient(to right, darkblue, lightseagreen); /* Degradado de rojo a verde */
+    background-clip: text; /* Clip de fondo al texto */
+    color: transparent; /* Para que el degradado sea visible */
+    margin-bottom: -10px;
+    margin-top: -20px;
+}
+
+.text-titles {
+    color: darkblue;
+}
+
+.text-hi {
+    text-align: center;
+}
+
+.back-arrow-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+}
+
+.back-arrow {
+    font-size: 24px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.back-arrow:hover {
+    color: #666;
 }

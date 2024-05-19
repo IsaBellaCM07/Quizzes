@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import '../styles/InicioEstudianteStyle.css';
@@ -43,12 +42,12 @@ const InicioEstudiante = () => {
         return <div>Loading...</div>;
     }
 
-    const handleExamClick = (examId) => {
-        navigate(`/presentarExamen/${studentId}/${examId}`);
+    const handleExamClick = (examenId) => {
+        navigate(`/infoPreExamen/${studentId}/${examenId}`);
     };
 
-    const handlePresentedExamClick = (examId) => {
-        navigate(`/informacionExamen/${studentId}/${examId}`);
+    const handlePresentedExamClick = () => {
+        navigate(`/informacionExamen/${studentId}`);
     };
 
     return (
@@ -105,10 +104,6 @@ const InicioEstudiante = () => {
             </div>
         </div>
     );
-};
-
-InicioEstudiante.propTypes = {
-    studentId: PropTypes.string.isRequired,
 };
 
 export default InicioEstudiante;

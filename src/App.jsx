@@ -4,8 +4,10 @@ import LoginEstudiante from './components/LoginEstudiante';
 import LoginDocente from './components/LoginDocente.jsx';
 import InicioDocente from './components/InicioDocente.jsx';
 import InicioEstudiante from './components/InicioEstudiante.jsx';
-import InformacionExamen from './components/InformacionExamen.jsx';
+import DetalleExamen from './components/DetalleExamen.jsx';
+import InfoPreExamen from './components/InfoPreExamen.jsx';
 import PresentarExamen from './components/PresentarExamen.jsx';
+
 
 function App() {
     return (
@@ -18,8 +20,10 @@ function App() {
                     <Route path="/loginDocente" element={<LoginDocente />} />
                     <Route path="/inicioDocente" element={<InicioDocente />} />
                     <Route path="/inicioEstudiante/:studentId" element={<InicioEstudiante />} />
-                    <Route path="/informacionExamen/:studentId/:examId" element={<InformacionExamen />} />
-                    <Route path="/presentarExamen/:studentId/:examId" element={<PresentarExamen />} />
+                    <Route path="/informacionExamen/:studentId" element={<DetalleExamen />} />
+                    <Route path="/infoPreExamen/:studentId/:examenId" element={<InfoPreExamen />} />
+                    <Route path="/presentarExamen/:studentId/:examenId" element={<PresentarExamen />} />
+
                 </Routes>
             </div>
         </BrowserRouter>

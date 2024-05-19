@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
-import '../styles/InformacionExamenStyle.css';
+import '../styles/DetalleExamenStyle.css';
 import PropTypes from "prop-types";
 import InicioEstudiante from "./InicioEstudiante.jsx";
 
-const InformacionExamen = () => {
-    const { studentId, examId } = useParams();
+const DetalleExamen = () => {
+    const { studentId } = useParams();
     const navigate = useNavigate();
     const [exam, setExam] = useState(null);
 
@@ -37,7 +37,6 @@ const InformacionExamen = () => {
             <div className="text-container">
                 <h1>Detalles del Examen</h1>
             </div>
-
             <div className="exam-section">
                 <h2 className="text-titles">Docente</h2>
                 <p>
@@ -84,4 +83,4 @@ InicioEstudiante.propTypes = {
     studentId: PropTypes.string.isRequired,
 };
 
-export default InformacionExamen;
+export default DetalleExamen;

@@ -50,7 +50,10 @@ li {
     cursor: pointer;
     border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background 0.3s ease; /* Add a transition for the gradient change */
+    transition: background 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
 }
 
 .exam-button:hover {
@@ -61,7 +64,7 @@ li {
     display: flex;
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /* Centra verticalmente, si fuera necesario */
-    background: linear-gradient(to right, darkblue, lightseagreen); /* Degradado de rojo a verde */
+    background: linear-gradient(to right, darkblue, lightseagreen);
     background-clip: text; /* Clip de fondo al texto */
     color: transparent; /* Para que el degradado sea visible */
     margin-bottom: -10px;

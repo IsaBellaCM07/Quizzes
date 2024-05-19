@@ -62,7 +62,7 @@ const LoginEstudiante = () => {
                         </select>
                     </div>
                     <div className="role-buttons">
-                        <button className="role-button" onClick={handleLogin}>Ingresar</button>
+                        <button className="role-button" onClick={() => handleLogin()}>Ingresar</button>
                     </div>
                 </div>
             </div>

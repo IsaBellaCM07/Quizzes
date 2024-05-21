@@ -30,7 +30,7 @@ const LoginEstudiante = () => {
 
     const handleLogin = () => {
         if (selectedStudent) {
-            navigate(`/inicioEstudiante/${selectedStudent.ID_ESTUDIANTE}`);         }
+            navigate(`/dashboardEstudiante/${selectedStudent.ID_ESTUDIANTE}`);         }
         else {
             alert('Por favor selecciona un estudiante.');
         }

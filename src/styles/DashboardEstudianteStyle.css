@@ -1,0 +1,61 @@
+.font{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.app-header-dash {
+    background-color: transparent;
+    color: #333;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alinea verticalmente los elementos del encabezado */
+}
+
+.title {
+    font-size: 30px;
+    margin-right: 1200px; /* Ajusta el margen izquierdo del título */
+    display: inline-block;
+    background: linear-gradient(to right, darkblue, lightseagreen); /* Degradado de rojo a verde */
+    -webkit-background-clip: text; /* Clip de fondo al texto para WebKit */
+    background-clip: text; /* Clip de fondo al texto */
+    color: transparent; /* Hace que el texto sea transparente */
+    font-weight: bold;
+}
+
+.back-arrow-dashboard {
+    display: flex;
+    margin-top: 10px;
+    align-items: center; /* Alinea verticalmente la flecha con el texto "Moralma" */
+}
+
+.greeting {
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.back-arrow {
+    font-size: 24px;
+    color: #333;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.back-arrow:hover {
+    color: #666;
+}
+
+.divider {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 0;
+}

@@ -1,97 +1,70 @@
-.dashboard-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
-    position: relative; /* Añadir esto para la posición de la flecha */
-}
+/* InicioEstudianteStyle.css */
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.profile-section, .exams-section, .schedule-section, .study-plan-section {
-    margin-bottom: 20px;
-}
-
-h2 {
-    margin-bottom: 10px;
-    color: #333;
-}
-
-p, ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-ul {
-    padding-left: 20px;
-}
-
-li {
-    margin-bottom: 5px;
-}
-
-.exam-button {
-    background: linear-gradient(to right, whitesmoke, lightgray);
-    border: none;
-    color: black;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background 0.3s ease;
+.inicio-estudiante .font {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
 }
 
-.exam-button:hover {
-    background: linear-gradient(to right, whitesmoke, darkgray);
-}
-
-.text-container {
+.inicio-estudiante .app-header-dash {
+    background-color: transparent;
+    color: #333;
+    padding: 20px;
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente, si fuera necesario */
-    background: linear-gradient(to right, darkblue, lightseagreen);
-    background-clip: text; /* Clip de fondo al texto */
-    color: transparent; /* Para que el degradado sea visible */
-    margin-bottom: -10px;
-    margin-top: -20px;
+    justify-content: space-between;
+    align-items: center; /* Alinea verticalmente los elementos del encabezado */
 }
 
-.text-titles {
+.inicio-estudiante .back-arrow-dashboard {
+    display: flex;
+    margin-top: 10px;
+    align-items: center; /* Alinea verticalmente la flecha con el texto "Moralma" */}
+
+.inicio-estudiante .title {
+    font-size: 30px;
+    margin-right: 1200px; /* Ajusta el margen izquierdo del título */
+    display: inline-block;
+    background: linear-gradient(to right, darkblue, lightseagreen); /* Degradado de rojo a verde */
+    -webkit-background-clip: text; /* Clip de fondo al texto para WebKit */
+    background-clip: text; /* Clip de fondo al texto */
+    color: transparent; /* Hace que el texto sea transparente */
+    font-weight: bold;
+}
+
+.inicio-estudiante .greeting {
+    margin-right: 20px;
+    margin-top: 10px;}
+
+.inicio-estudiante .divider {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 0;}
+
+.inicio-estudiante .main-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.inicio-estudiante .section {
+    width: 45%;
+}
+
+.inicio-estudiante .presented-exams h2, .inicio-estudiante .available-exams h2 {
+    text-align: center;
     color: darkblue;
 }
 
-.text-hi {
-    text-align: center;
+.inicio-estudiante .course-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    padding: 20px;
 }
 
-.back-arrow-container {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    cursor: pointer;
-}
-
-.back-arrow {
-    font-size: 24px;
-    color: #333;
-    transition: color 0.3s ease;
-}
-
-.back-arrow:hover {
-    color: #666;
+.inicio-estudiante .vertical-line {
+    width: 2px;
+    background-color: #ccc;
+    margin: 0 20px;
 }

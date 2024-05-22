@@ -9,6 +9,7 @@ const InicioEstudiante = () => {
     const [studentName, setStudentName] = useState('');
     const [exams, setExams] = useState([]);
     const [presentedExams, setPresentedExams] = useState([]);
+    const [noExamsAvailable, setNoExamsAvailable] = useState(false);
 
     useEffect(() => {
         const fetchStudentData = async () => {
@@ -24,6 +25,13 @@ const InicioEstudiante = () => {
                 const presentedExamsResponse = await fetch(`http://localhost:3001/api/examsPres/${studentId}`);
                 const presentedExamsData = await presentedExamsResponse.json();
                 setPresentedExams(presentedExamsData);
+
+                // Si no hay exámenes disponibles, mostrar el aviso
+                if (examsData.length === 0) {
+                    setNoExamsAvailable(true);
+                } else {
+                    setNoExamsAvailable(false);
+                }
 
             } catch (error) {
                 console.error('Error al obtener datos del estudiante:', error);
@@ -58,14 +66,21 @@ const InicioEstudiante = () => {
                 <div className="section available-exams">
                     <h2>Exámenes Disponibles</h2>
                     <div className="course-grid">
-                        {exams.map((exam, index) => (
-                            <QuizCard key={index} quiz={exam} studentId={studentId} type="available" />
-                        ))}
+                        {noExamsAvailable ? (
+                            <div className="no-exams-message-box">
+                                <div className="no-exams-message">¡Estás al día!</div>
+                            </div>
+                        ) : (
+                            exams.map((exam, index) => (
+                                <QuizCard key={index} quiz={exam} studentId={studentId} type="available" />
+                            ))
+                        )}
                     </div>
                 </div>
             </div>
         </div>
     );
+
 };
 
 export default InicioEstudiante;

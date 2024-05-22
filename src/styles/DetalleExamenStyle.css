@@ -1,62 +1,55 @@
-.dashboard-container {
-    max-width: 800px;
-    margin: 0 auto;
+.detalle-examen-container {
+    max-width: 400px;
+    margin: 20px auto;
+    margin-top: 130px;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
+    background: white;
     position: relative;
 }
 
-h1 {
+.detalle-examen-container h1 {
     text-align: center;
     margin-bottom: 20px;
 }
 
-.exam-section {
+.exam-section-detail {
     margin-bottom: 20px;
 }
 
-h2 {
+.exam-section-detail h2.text-titles-detail {
     margin-bottom: 10px;
-    color: #333;
-}
-
-p {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-.text-container {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente, si fuera necesario */
-    background: linear-gradient(to right, darkblue, lightseagreen); /* Degradado de rojo a verde */
-    background-clip: text; /* Clip de fondo al texto */
-    color: transparent; /* Para que el degradado sea visible */
-    margin-bottom: -10px;
-    margin-top: 10px;
-}
-
-.text-titles {
     color: darkblue;
 }
 
-.back-arrow-container {
+.exam-section-detail p {
+    margin: 5px 0;
+}
+
+.text-container-detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, darkblue, lightseagreen);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
+}
+
+.back-arrow-container-detail {
     position: absolute;
-    top: 10px;
-    left: 10px;
     cursor: pointer;
 }
 
-.back-arrow {
+.back-arrow-detail {
     font-size: 24px;
     color: #333;
     transition: color 0.3s ease;
 }
 
-.back-arrow:hover {
+.back-arrow-detail:hover {
     color: #666;
 }

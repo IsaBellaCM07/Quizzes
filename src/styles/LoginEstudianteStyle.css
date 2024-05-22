@@ -51,8 +51,8 @@
 
 .back-arrow-container {
     position: absolute;
-    margin-top: -20px;
-    margin-left: -35px;
+    margin-top: 10px;
+    margin-left: -3px;
     cursor: pointer;
 }
 

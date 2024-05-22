@@ -5,6 +5,8 @@ import InicioEstudiante from './components/InicioEstudiante.jsx';
 import LoginEstudiante from './components/LoginEstudiante';
 import LoginDocente from './components/LoginDocente.jsx';
 import DetalleExamen from './components/DetalleExamen.jsx';
+import InfoPreExamen from './components/InfoPreExamen.jsx';
+import PresentarExamen from './components/PresentarExamen.jsx';
 
 
 function App() {
@@ -20,6 +22,10 @@ function App() {
                     <Route path="/dashboardEstudiante/:studentId" element={<DashboardEstudiante />} />
                     <Route path="/inicioEstudiante/:studentId" element={<InicioEstudiante />} />
                     <Route path="/informacionExamen/:studentId" element={<DetalleExamen />} />
+                    <Route path="/infoPreExamen/:studentId/:examenId" element={<InfoPreExamen />} />
+                    <Route path="/presentarExamen/:studentId/:examenId" element={<PresentarExamen />} />
+
+
                 </Routes>
             </div>
         </BrowserRouter>

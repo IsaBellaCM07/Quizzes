@@ -68,3 +68,20 @@
     background-color: #ccc;
     margin: 0 20px;
 }
+
+.no-exams-message-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%; /* Ancho del cuadro */
+    margin: auto; /* Centra el cuadro horizontalmente */
+    background: white; /* Color de fondo del cuadro */
+    padding: 10px; /* Espaciado dentro del cuadro */
+    margin-top: 50px;
+}
+
+.no-exams-message {
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}

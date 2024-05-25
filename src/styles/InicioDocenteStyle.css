@@ -1,0 +1,152 @@
+/* Estilos generales */
+.inicio-docente {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.inicio-docente .app-header-dash {
+    background-color: transparent;
+    color: #333;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en el header */
+}
+
+.inicio-docente .back-arrow-dashboard {
+    display: flex;
+    margin-top: -20px;
+    margin-left: 0px;
+    align-items: center; /* Alinea verticalmente la flecha con el texto "Moralma" */}
+
+.inicio-docente .title {
+    font-size: 30px;
+    margin-right: 1330px; /* Ajusta el margen izquierdo del título */
+    display: inline-block;
+    background: linear-gradient(to right, darkblue, lightseagreen); /* Degradado de rojo a verde */
+    -webkit-background-clip: text; /* Clip de fondo al texto para WebKit */
+    background-clip: text; /* Clip de fondo al texto */
+    color: transparent; /* Hace que el texto sea transparente */
+    font-weight: bold;
+    margin-top: -30px;
+}
+
+.inicio-docente .divider {
+    width: 110%;
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 0;
+}
+
+/* Estilos de las pestañas */
+.inicio-docente .tabs-container {
+    display: flex;
+    flex-direction: row; /* Alinea las tabs en una fila */
+    justify-content: center; /* Centra las tabs horizontalmente */
+    align-items: center; /* Alinea las tabs verticalmente al centro */
+    flex-wrap: wrap; /* Permite que las tabs se envuelvan en el header */
+    margin-left: 470px;
+    margin-top: -10px;
+}
+
+.inicio-docente .tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px; /* Agrega margen derecho para separar las tabs */
+}
+
+.inicio-docente .tab:hover {
+    background-color: #f0f0f0;
+}
+
+.inicio-docente .tab.active {
+    background-color: #fff;
+    border-bottom: 2px solid darkblue;
+}
+
+/* Estilos del contenido de las pestañas */
+.inicio-docente .tab-content {
+    padding: 20px;
+}
+
+.inicio-docente .section {
+    display: none;
+}
+
+.inicio-docente .section.active {
+    display: block;
+}
+
+/* Estilos para el formulario de creación de examen */
+.form-container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif; /* Aplica la fuente al formulario */
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+    color: darkblue;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.submit-button {
+    background: linear-gradient(to right, darkblue, lightseagreen);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
+    margin: 20px auto 0;
+}
+
+.submit-button:hover {
+    background: linear-gradient(to right, darkblue, blueviolet);
+}

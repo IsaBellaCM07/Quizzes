@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import '../styles/CourseCardStyle.css';
+import '../styles/CourseCardTeacherStyle.css';
 
-const CourseCard = ({ course, studentId }) => {
+const CourseCard = ({ course, docenteId}) => {
     return (
         <div className="font">
             <div className="course-card">
                 <div className="course-header">
-                    <Link to={`/inicioEstudiante/${studentId}`} className="course-title">
+                    <Link to={`/inicioDocente/${docenteId}/${course.id_curso}`} className="course-title">
                         {`${course.nombre_grupo} - ${course.nombre}`}
                     </Link>
                 </div>
@@ -14,7 +14,7 @@ const CourseCard = ({ course, studentId }) => {
                     <div className="course-content">{course.contenido}</div>
                 </div>
                 <div className="course-footer">
-                    <div className="course-professor">Docente: {course.nombre_docente}</div>
+                    <div className="course-professor">Estudiantes inscritos: {course.numero_estudiantes}</div>
                 </div>
             </div>
         </div>

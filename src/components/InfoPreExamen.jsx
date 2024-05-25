@@ -54,8 +54,8 @@ const InfoPreExamen = () => {
 
     return (
         <div className="dashboard-container">
-            <div className="back-arrow-container">
-                <FiArrowLeft className="back-arrow" onClick={handleBackClick}/>
+            <div className="back-arrow2-container">
+                <FiArrowLeft className="back-arrow2" onClick={handleBackClick}/>
             </div>
             <div className="text-container">
                 <h1>{examInfo.title}</h1>

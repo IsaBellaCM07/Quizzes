@@ -1,0 +1,58 @@
+.inicio-docente {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.app-header-dash {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: transparent;
+}
+
+.students-container {
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+.students-container h2 {
+    padding: 20px;
+    margin-bottom: -20px;
+    margin-top: -30px;
+    color: darkblue;
+    text-align: center;
+}
+
+.students-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.students-table th, .students-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.students-table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.students-table td {
+    background-color: #fff;
+    color: #333;
+}

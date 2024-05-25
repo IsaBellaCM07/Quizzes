@@ -15,7 +15,6 @@ const LoginDocente = () => {
                 const response = await fetch('http://localhost:3001/api/docentes');
                 const data = await response.json();
                 setDocentes(data);
-                console.log(data)
             } catch (error) {
                 console.error('Error al obtener docentes:', error);
             }
@@ -32,7 +31,7 @@ const LoginDocente = () => {
 
     const handleLogin = () => {
         if (selectedTeacher) {
-            navigate('/inicioDocente', { state: { teacher: selectedTeacher } });
+            navigate(`/dashboardDocente/${selectedTeacher.ID_DOCENTE}`);
         } else {
             alert('Por favor selecciona un docente.');
         }

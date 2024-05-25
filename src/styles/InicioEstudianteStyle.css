@@ -17,29 +17,34 @@
 
 .inicio-estudiante .back-arrow-dashboard {
     display: flex;
-    margin-top: 10px;
+    margin-top: 0px;
     align-items: center; /* Alinea verticalmente la flecha con el texto "Moralma" */}
 
 .inicio-estudiante .title {
     font-size: 30px;
     margin-right: 1200px; /* Ajusta el margen izquierdo del título */
     display: inline-block;
-    background: linear-gradient(to right, darkblue, lightseagreen); /* Degradado de rojo a verde */
+    background: linear-gradient(to right, darkblue, lightseagreen);
     -webkit-background-clip: text; /* Clip de fondo al texto para WebKit */
     background-clip: text; /* Clip de fondo al texto */
     color: transparent; /* Hace que el texto sea transparente */
     font-weight: bold;
+    margin-top: -10px;
+    margin-left: -60px;
 }
 
 .inicio-estudiante .greeting {
-    margin-right: 20px;
-    margin-top: 10px;}
+    margin-right: 40px;
+    margin-top: 10px;
+    color:black
+}
 
 .inicio-estudiante .divider {
     width: 100%;
     border: none;
     border-top: 1px solid #ccc;
-    margin: 0;}
+    margin: 0;
+}
 
 .inicio-estudiante .main-container {
     display: flex;

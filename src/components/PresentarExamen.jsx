@@ -51,7 +51,6 @@ const PresentarExamen = () => {
             const currentQuestion = questions[currentQuestionIndex];
 
             if (currentQuestion) {
-                // Los minutos vienen del backend
                 const minutes = currentQuestion.tiempo;
                 setTimeRemaining({ minutes, seconds: 0 });
 
@@ -104,31 +103,31 @@ const PresentarExamen = () => {
 
     const handleAnswerChange = (questionId, answer, currentQuestion) => {
         if (currentQuestion.tipo === 'Selección única') {
-            // Establecer la respuesta como única
             setAnswers({
                 ...answers,
                 [questionId]: answer
             });
         } else if (currentQuestion.tipo === 'Selección múltiple') {
-            // Manejar preguntas de selección múltiple
             const selectedAnswers = answers[questionId] || [];
             const index = selectedAnswers.indexOf(answer);
             if (index === -1) {
-                // Agregar respuesta si no está presente
                 setAnswers({
                     ...answers,
                     [questionId]: [...selectedAnswers, answer]
                 });
             } else {
-                // Eliminar respuesta si ya está presente
                 const updatedAnswers = [...selectedAnswers.slice(0, index), ...selectedAnswers.slice(index + 1)];
                 setAnswers({
                     ...answers,
                     [questionId]: updatedAnswers
                 });
             }
+        } else if (currentQuestion.tipo === 'Completar espacios en blanco') {
+            setAnswers({
+                ...answers,
+                [questionId]: answer
+            });
         } else {
-            // Si no es una pregunta de selección múltiple, establecer la respuesta como única
             setAnswers({
                 ...answers,
                 [questionId]: answer
@@ -152,6 +151,31 @@ const PresentarExamen = () => {
         // Lógica para finalizar el examen
     };
 
+    const renderBlankSpaceQuestion = (descripcion, questionId) => {
+        const parts = descripcion.split('_');
+        const answer = answers[questionId] || '';
+
+        return (
+            <div>
+                {parts.map((part, index) => (
+                    <React.Fragment key={index}>
+                        {part}
+                        {index < parts.length - 1 && (
+                            <input
+                                type="text"
+                                className="blank-space"
+                                value={answer}
+                                onChange={(e) =>
+                                    handleAnswerChange(questionId, e.target.value, { tipo: 'Completar espacios en blanco' })
+                                }
+                            />
+                        )}
+                    </React.Fragment>
+                ))}
+            </div>
+        );
+    };
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -166,7 +190,7 @@ const PresentarExamen = () => {
 
         return (
             <div className="exam-container">
-                <div className="back-arrow-container">
+                <div className="back-arrow-container-PE">
                     <FiArrowLeft className="back-arrow" onClick={() => navigate(-1)} />
                 </div>
 
@@ -174,7 +198,7 @@ const PresentarExamen = () => {
                     <>
                         <p>Tiempo restante: {timeRemaining.minutes}:{timeRemaining.seconds < 10 ? '0' : ''}{timeRemaining.seconds}</p>
                         <b><p>Pregunta {currentQuestionIndex + 1} de {questions.length}</p></b>
-                        <h2>{currentQuestion.descripcion}</h2>
+                        <h2>{currentQuestion.tipo === 'Completar espacios en blanco' ? renderBlankSpaceQuestion(currentQuestion.descripcion, currentQuestion.id) : currentQuestion.descripcion}</h2>
                         <div className="options-container">
                             {currentQuestion.tipo === 'Selección única' && (
                                 currentQuestion.opciones.map((opcion, index) => (
@@ -186,7 +210,6 @@ const PresentarExamen = () => {
                                                 value={opcion.descripcion}
                                                 checked={answers[currentQuestion.id] === opcion.descripcion}
                                                 onChange={() => handleAnswerChange(currentQuestion.id, opcion.descripcion, currentQuestion)}
-
                                             />
                                             {opcion.descripcion}
                                         </label>
@@ -217,7 +240,7 @@ const PresentarExamen = () => {
                                             name={`question-${currentQuestion.id}`}
                                             value="Verdadero"
                                             checked={answers[currentQuestion.id] === 'Verdadero'}
-                                            onChange={() => handleAnswerChange(currentQuestion.id, 'Verdadero', currentQuestion)} // Aquí pasamos currentQuestion como tercer parámetro
+                                            onChange={() => handleAnswerChange(currentQuestion.id, 'Verdadero', currentQuestion)}
                                         />
                                         Verdadero
                                     </label>
@@ -227,7 +250,7 @@ const PresentarExamen = () => {
                                             name={`question-${currentQuestion.id}`}
                                             value="Falso"
                                             checked={answers[currentQuestion.id] === 'Falso'}
-                                            onChange={() => handleAnswerChange(currentQuestion.id, 'Falso', currentQuestion)} // Aquí pasamos currentQuestion como tercer parámetro
+                                            onChange={() => handleAnswerChange(currentQuestion.id, 'Falso', currentQuestion)}
                                         />
                                         Falso
                                     </label>
@@ -237,26 +260,25 @@ const PresentarExamen = () => {
                         <div className="navigation-buttons">
                             <button className="button-" onClick={handlePreviousQuestion}
                                     disabled={currentQuestionIndex === 0}>
-                            Anterior
-            </button>
-    {isLastQuestion ? (
-            <button className="button-finalizar" onClick={handleFinish}>
-                Finalizar
-            </button>
-        ) : (
-            <button className="button-" onClick={handleNextQuestion}>
-                Siguiente
-            </button>
-        )}
-    </div>
-    </>
-    )}
-    </div>
-    );
+                                Anterior
+                            </button>
+                            {isLastQuestion ? (
+                                <button className="button-finalizar" onClick={handleFinish}>
+                                    Finalizar
+                                </button>
+                            ) : (
+                                <button className="button-" onClick={handleNextQuestion}>
+                                    Siguiente
+                                </button>
+                            )}
+                        </div>
+                    </>
+                )}
+            </div>
+        );
     } else {
         return <div>No se encontraron preguntas.</div>;
     }
 };
 
 export default PresentarExamen;
-

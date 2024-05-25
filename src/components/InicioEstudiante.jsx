@@ -57,9 +57,15 @@ const InicioEstudiante = () => {
                 <div className="section presented-exams">
                     <h2>Exámenes Presentados</h2>
                     <div className="course-grid">
-                        {presentedExams.map((exam, index) => (
-                            <QuizCard key={index} quiz={exam} studentId={studentId} type="presented" />
-                        ))}
+                        {presentedExams.length === 0 ? (
+                            <div className="no-exams-message-box">
+                                <div className="no-exams-message">Aún no has presentado ningún examen.</div>
+                            </div>
+                        ) : (
+                            presentedExams.map((exam, index) => (
+                                <QuizCard key={index} quiz={exam} studentId={studentId} type="presented" />
+                            ))
+                        )}
                     </div>
                 </div>
                 <div className="vertical-line"></div>
@@ -80,7 +86,6 @@ const InicioEstudiante = () => {
             </div>
         </div>
     );
-
 };
 
 export default InicioEstudiante;

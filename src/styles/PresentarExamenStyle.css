@@ -9,7 +9,6 @@
     background: white;
     text-align: center;
     position: relative; /* Añadir esto para la posición de la flecha */
-
 }
 
 h2 {
@@ -74,7 +73,7 @@ textarea, input[type="text"] {
     text-align: center;
 }
 
-.back-arrow-container {
+.back-arrow-container-PE {
     position: absolute;
     top: 10px;
     left: 10px;
@@ -114,3 +113,12 @@ textarea, input[type="text"] {
     cursor: not-allowed;
 }
 
+input[type="text"].blank-space {
+    max-width: 200px; /* Limitar el ancho máximo */
+    width: auto; /* Permitir que el campo se ajuste al contenido */
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+}

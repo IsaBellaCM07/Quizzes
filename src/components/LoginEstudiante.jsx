@@ -40,7 +40,7 @@ const LoginEstudiante = () => {
         <div className="login-container">
             <div className="login-form">
                 <div className="login-box">
-                    <div className="back-arrow-container">
+                    <div className="back-arrow-container-Login">
                         <FiArrowLeft className="back-arrow" onClick={() => navigate('/login')} />
                     </div>
                     <div className="text-container">

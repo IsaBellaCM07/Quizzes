@@ -7,7 +7,7 @@ import '../styles/DashboardEstudianteStyle.css';
 const DashboardEstudiante = () => {
     const [courses, setCourses] = useState([]);
     const [studentName, setStudentName] = useState('');
-    const {studentId} = useParams();
+    const { studentId } = useParams();
 
     useEffect(() => {
         const fetchStudentData = async () => {
@@ -30,15 +30,15 @@ const DashboardEstudiante = () => {
     }, [studentId]);
 
     return (
-        <div className="font">
+        <div className="dashboard-estudiante font">
             <header className="app-header-dash">
                 <div className="back-arrow-dashboard">
                     <Link to="/loginEstudiante">
                         <FiArrowLeft className="back-arrow" />
                     </Link>
                 </div>
-                <div className="title">Moralma</div>
-                <div className="greeting">Hola, {studentName}</div>
+                <div className="title-Est">Moralma</div>
+                <div className="greeting-Est">Hola, {studentName}</div>
             </header>
             <hr className="divider" />
             <div className="course-grid">

@@ -1,76 +1,29 @@
-.inicio-docente {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.app2-header-dash {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    color: #fff;
-    background-color: transparent;
-}
-
-.back-arrow-dashboard {
-    display: flex;
-    align-items: center;
-}
-
-.back3-arrow {
-    color: #fff;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.titleDoc {
-    font-size: 30px;
-    margin-right: 1310px;
-    margin-top: -10px;
-    display: inline-block;
-    background: linear-gradient(to right, darkblue, lightseagreen);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: bold;
-}
-
-.greeting {
-    margin-right: 20px;
-    margin-top: 10px;
-}
-
-.divider {
-    width: 100%;
-    border: none;
-    border-top: 1px solid #ccc;
-    margin: 0;
-}
-
 .form-container {
     width: 100%;
-    max-width: 600px;
+    max-width: 800px;
     background-color: #fff;
-    padding: 40px; /* Ajustar el padding para más espacio */
+    padding: 40px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-top: 20px; /* Agregar margen para separar del divider */
+    margin-top: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
 .form-container h2 {
     margin-bottom: 20px;
-    margin-top: -10px;
+    margin-top: -20px;
     color: darkblue;
     text-align: center;
 }
 
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas con igual ancho */
+    gap: 50px; /* Espacio entre las columnas */
+}
+
 .form-group-CE {
-    margin-bottom: 15px; /* Ajustar el margen inferior */
+    margin-bottom: 15px;
 }
 
 .form-group-CE label {
@@ -79,33 +32,31 @@
     color: #333;
 }
 
-.form-group-CE input,
-.form-group-CE textarea{
-    width: 100%;
+.form-group-CE input{
+    width: 100%; /* Ancho completo para input y select */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
-    margin-bottom: 10px; /* Reducir el margen inferior */
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    margin-bottom: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
-.form-group-CE select {
-    width: 107%;
+.form-group-CE select{
+    width: 108%; /* Ancho completo para input y select */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
-    margin-bottom: 10px; /* Reducir el margen inferior */
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    margin-bottom: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
 .form-group-CE textarea {
-    resize: vertical;
+    max-width: 100%;
+    resize: none;
+    height: 22px;
+    border: 1px solid #ccc;
 }
 
 .submit-button {
@@ -115,15 +66,27 @@
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
-    display: block; /* Cambiar a block para centrar */
+    display: block;
     font-size: 16px;
     cursor: pointer;
     border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background 0.3s ease;
-    margin: 20px auto 0; /* Centrar el botón y agregar margen superior */
 }
 
 .submit-button:hover {
     background: linear-gradient(to right, darkblue, blueviolet);
+}
+
+.back-arrow-Agg{
+    cursor: pointer;
+    color: darkblue;
+    margin-bottom: -70px;
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 24px;
+}
+
+.back-arrow-Agg:hover {
+    color: lightseagreen;
 }

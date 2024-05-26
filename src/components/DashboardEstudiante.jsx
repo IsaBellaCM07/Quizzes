@@ -32,9 +32,9 @@ const DashboardEstudiante = () => {
     return (
         <div className="dashboard-estudiante font">
             <header className="app-header-dash">
-                <div className="back-arrow-dashboard">
+                <div className="back-arrow-dashboard-Est">
                     <Link to="/loginEstudiante">
-                        <FiArrowLeft className="back-arrow" />
+                        <FiArrowLeft className="back-arrow-Est" />
                     </Link>
                 </div>
                 <div className="title-Est">Moralma</div>

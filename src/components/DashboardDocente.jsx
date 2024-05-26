@@ -33,7 +33,7 @@ const DashboardDocente = () => {
             <header className="app-header-dash">
                 <div className="back-arrow-dashboard">
                     <Link to="/loginDocente">
-                        <FiArrowLeft className="back-arrow" />
+                        <FiArrowLeft className="back-arrow-Doc" />
                     </Link>
                 </div>
                 <div className="title-Doce">Moralma</div>

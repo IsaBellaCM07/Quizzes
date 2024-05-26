@@ -35,27 +35,28 @@ body {
     font-weight: bold;
 }
 
-.back-arrow-dashboard {
+.back-arrow-dashboard-Est {
     display: flex;
     margin-top: 10px;
     align-items: center; /* Alinea verticalmente la flecha con el texto "Moralma" */
 }
 
 .greeting-Est {
-    margin-right: 30px;
+    margin-right: 40px;
     margin-top: 10px;
     color: black;
 }
 
-.back-arrow {
-    font-size: 24px;
-    color: #333;
-    transition: color 0.3s ease;
+.back-arrow-Est {
     cursor: pointer;
+    color: darkblue;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 24px;
 }
 
-.back-arrow:hover {
-    color: #666;
+.back-arrow-Est:hover {
+    color: lightseagreen;
 }
 
 .divider {

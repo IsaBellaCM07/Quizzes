@@ -39,6 +39,7 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+    margin-bottom: -30px;
 }
 
 .role-button:hover {
@@ -66,3 +67,12 @@
     color: #666;
 }
 
+.text-container-Doc {
+    display: inline-block;
+    background: linear-gradient(to right, darkblue, lightseagreen); /* Degradado de rojo a verde */
+    -webkit-background-clip: text; /* Clip de fondo al texto para WebKit */
+    background-clip: text; /* Clip de fondo al texto */
+    color: transparent; /* Hace que el texto sea transparente */
+    margin-bottom: -20px;
+
+}

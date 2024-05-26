@@ -18,13 +18,15 @@
 }
 
 .back-arrow2 {
+    cursor: pointer;
+    color: darkblue;
+    margin-left: -10px;
+    margin-top: -10px;
     font-size: 24px;
-    color: #333;
-    transition: color 0.3s ease;
 }
 
 .back-arrow2:hover {
-    color: #666;
+    color: lightseagreen;
 }
 
 .text-container {

@@ -43,10 +43,10 @@ const LoginEstudiante = () => {
                     <div className="back-arrow-container-Login">
                         <FiArrowLeft className="back-arrow" onClick={() => navigate('/login')} />
                     </div>
-                    <div className="text-container">
+                    <div className="text-container-Est">
                         <h1 className="gradient-text">¿Qué estudiante eres?</h1>
                     </div>
-                    <p className="login-description">Selecciona una opción:</p>
+                    <p className="login-description-Est">Selecciona una opción:</p>
                     <div className="role-buttons">
                         <select
                             className="student-dropdown"

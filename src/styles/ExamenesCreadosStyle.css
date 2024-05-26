@@ -4,36 +4,6 @@
     sans-serif;
 }
 
-.examenes-creados .app-header-dash {
-    background-color: transparent;
-    color: #333;
-    padding: 20px;
-    display: flex;
-    justify-content: center; /* Centra los elementos horizontalmente */
-    align-items: center;
-}
-
-.examenes-creados .back-arrow-dashboard {
-    display: flex;
-    margin-top: 10px;
-    align-items: center; /* Alinea verticalmente la flecha con el texto "Moralma" */
-}
-
-.examenes-creados .title {
-    font-size: 30px;
-    margin-right: auto;
-    margin-left: auto;
-    display: inline-block;
-    font-weight: bold;
-}
-
-.examenes-creados .divider {
-    width: 100%;
-    border: none;
-    border-top: 1px solid #ccc;
-    margin: 0;
-}
-
 .examenes-creados .exam-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajusta automáticamente el ancho de las cartas de examen */

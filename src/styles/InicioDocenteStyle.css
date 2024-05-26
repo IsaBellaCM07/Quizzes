@@ -9,6 +9,7 @@
     padding: 20px;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Asegura que el contenedor tome todo el ancho disponible */
 }
 
 .inicio-docente .app-header-dash {
@@ -18,29 +19,43 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en el header */
+    width: 100%;
+    max-width: 1200px; /* Limita el ancho máximo del encabezado */
 }
 
 .inicio-docente .back-arrow-dashboard {
     display: flex;
-    margin-top: -20px;
-    margin-left: 0px;
-    align-items: center; /* Alinea verticalmente la flecha con el texto "Moralma" */}
+    align-items: center;
+    margin-left: -170px;
+    margin-top: -70px;
+
+}
+
+.inicio-docente .back-arrow{
+    cursor: pointer;
+    color: darkblue;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+.inicio-docente .back-arrow:hover {
+    color: lightseagreen;
+}
 
 .inicio-docente .title {
     font-size: 30px;
-    margin-right: 1330px; /* Ajusta el margen izquierdo del título */
-    display: inline-block;
     background: linear-gradient(to right, darkblue, lightseagreen); /* Degradado de rojo a verde */
     -webkit-background-clip: text; /* Clip de fondo al texto para WebKit */
     background-clip: text; /* Clip de fondo al texto */
     color: transparent; /* Hace que el texto sea transparente */
     font-weight: bold;
-    margin-top: -30px;
+    text-align: center;
+    margin-top: -80px;
 }
 
 .inicio-docente .divider {
-    width: 110%;
+    width: 100%;
     border: none;
     border-top: 1px solid #ccc;
     margin: 0;
@@ -49,12 +64,10 @@
 /* Estilos de las pestañas */
 .inicio-docente .tabs-container {
     display: flex;
-    flex-direction: row; /* Alinea las tabs en una fila */
-    justify-content: center; /* Centra las tabs horizontalmente */
-    align-items: center; /* Alinea las tabs verticalmente al centro */
-    flex-wrap: wrap; /* Permite que las tabs se envuelvan en el header */
-    margin-left: 470px;
-    margin-top: -10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
 }
 
 .inicio-docente .tab {
@@ -75,7 +88,10 @@
 
 /* Estilos del contenido de las pestañas */
 .inicio-docente .tab-content {
-    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    margin-top: 20px;
 }
 
 .inicio-docente .section {
@@ -84,6 +100,8 @@
 
 .inicio-docente .section.active {
     display: block;
+    max-width: 800px; /* Limita el ancho máximo del contenido */
+    width: 100%;
 }
 
 /* Estilos para el formulario de creación de examen */

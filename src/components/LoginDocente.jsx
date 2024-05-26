@@ -44,7 +44,7 @@ const LoginDocente = () => {
                     <div className="back-arrow-container"> {/* Contenedor de la flecha */}
                         <FiArrowLeft className="back-arrow" onClick={() => navigate('/login')} /> {/* Flecha izquierda con evento onClick para redirigir al login */}
                     </div>
-                    <div className="text-container">
+                    <div className="text-container-Doc">
                         <h1 className="gradient-text">¿Qué docente eres?</h1>
                     </div>
                     <p className="login-description">Selecciona una opción:</p>

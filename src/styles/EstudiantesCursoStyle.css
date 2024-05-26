@@ -18,8 +18,11 @@
 }
 
 .students-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    max-width: 800px;
+    max-width: 400px; /* Define el ancho máximo del contenedor */
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -36,7 +39,6 @@
 }
 
 .students-table {
-    width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
@@ -44,15 +46,31 @@
 .students-table th, .students-table td {
     border: 1px solid #ccc;
     padding: 10px;
-    text-align: left;
+    text-align: center;
 }
 
 .students-table th {
-    background-color: #f2f2f2;
+    background-color: lightsteelblue;
     color: #333;
 }
 
 .students-table td {
     background-color: #fff;
     color: #333;
+}
+
+.students-table .eye-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.eye-icon {
+    color: darkblue;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.eye-icon:hover {
+    color: blueviolet;
 }

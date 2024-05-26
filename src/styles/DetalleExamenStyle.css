@@ -45,11 +45,13 @@
 }
 
 .back-arrow-detail {
+    cursor: pointer;
+    color: darkblue;
+    margin-left: -10px;
+    margin-top: -10px;
     font-size: 24px;
-    color: #333;
-    transition: color 0.3s ease;
 }
 
 .back-arrow-detail:hover {
-    color: #666;
+    color: lightseagreen;
 }

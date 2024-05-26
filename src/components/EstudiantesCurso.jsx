@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
+import { FiEye } from 'react-icons/fi';
 import '../styles/EstudiantesCursoStyle.css';
 
 const EstudiantesCurso = () => {
@@ -22,27 +22,33 @@ const EstudiantesCurso = () => {
     }, [teacherId, cursoId]);
 
     return (
-            <div className="students-container">
-                <h2>Listado de Estudiantes</h2>
-                <table className="students-table">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
+        <div className="students-container">
+            <h2>Listado de Estudiantes</h2>
+            <table className="students-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Reportes</th>
+                </tr>
+                </thead>
+                <tbody>
+                {students.map((student) => (
+                    <tr key={student.id}>
+                        <td>{student.id}</td>
+                        <td>{student.nombre}</td>
+                        <td>{student.apellido}</td>
+                        <td>
+                            <Link to={`/reportes/${student.id}`}>
+                                <FiEye className="eye-icon" />
+                            </Link>
+                        </td>
                     </tr>
-                    </thead>
-                    <tbody>
-                    {students.map((student) => (
-                        <tr key={student.id}>
-                            <td>{student.id}</td>
-                            <td>{student.nombre}</td>
-                            <td>{student.apellido}</td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
-            </div>
+                ))}
+                </tbody>
+            </table>
+        </div>
     );
 };
 

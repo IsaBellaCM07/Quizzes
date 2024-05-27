@@ -8,11 +8,15 @@ import '../styles/InicioDocenteStyle.css';
 
 const InicioDocente = () => {
     const { teacherId, cursoId } = useParams();
+    const [docenteName, setDocenteName] = useState('');
+    const [exams, setExams] = useState([]);
     const [activeTab, setActiveTab] = useState('createdExams'); // Estado para la pestaña activa
 
     useEffect(() => {
         const fetchDocenteData = async () => {
-            // Lógica para obtener datos del docente
+            const docenteResponse = await fetch(`http://localhost:3001/api/docentes/${teacherId}`);
+            const docenteData = await docenteResponse.json();
+            setDocenteName(docenteData.NOMBRE);
         };
         fetchDocenteData();
     }, [teacherId, cursoId]);

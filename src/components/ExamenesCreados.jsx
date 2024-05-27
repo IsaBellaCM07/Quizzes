@@ -7,11 +7,11 @@ const ExamenesCreados = ({ teacherId, courseId }) => {
     useEffect(() => {
         const fetchExamsData = async () => {
             try {
-                const response = await fetch(
-                    `http://localhost:3001/api/examenes-creados/${teacherId}/${courseId}`
-                );
-                const data = await response.json();
-                setExams(data);
+
+                const examsResponse = await fetch(`http://localhost:3001/api/examenes-creados/${teacherId}/${courseId}`);
+                const examsData = await examsResponse.json();
+                setExams(examsData);
+
             } catch (error) {
                 console.error("Error al obtener los exámenes creados:", error);
             }

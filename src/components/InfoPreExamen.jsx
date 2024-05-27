@@ -49,6 +49,7 @@ const InfoPreExamen = () => {
     };
 
     const handleStartQuizClick = () => {
+
         navigate(`/presentarExamen/${studentId}/${examenId}`);
     };
 
@@ -79,8 +80,6 @@ const InfoPreExamen = () => {
                     </div>
                 ))}
             </p>
-
-
         </div>
     );
 };

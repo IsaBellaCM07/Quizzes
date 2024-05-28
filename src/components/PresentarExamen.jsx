@@ -4,7 +4,7 @@ import { FiArrowLeft } from 'react-icons/fi';
 import '../styles/PresentarExamenStyle.css';
 
 const PresentarExamen = () => {
-    const { examenId, studentId } = useParams();
+    const { examenId, studentId, presId } = useParams();
     const navigate = useNavigate();
     const [questions, setQuestions] = useState([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -16,7 +16,7 @@ const PresentarExamen = () => {
     useEffect(() => {
         const fetchQuestions = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/api/preguntas-examen/${examenId}`);
+                const response = await fetch(`http://localhost:3001/api/preguntas-examen/${examenId}/${presId}`);
                 if (!response.ok) {
                     throw new Error('Error al obtener las preguntas del examen');
                 }

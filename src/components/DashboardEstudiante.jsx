@@ -6,6 +6,7 @@ import '../styles/DashboardEstudianteStyle.css';
 
 const DashboardEstudiante = () => {
     const [courses, setCourses] = useState([]);
+    const [groups, setGroups] = useState([]);
     const [studentName, setStudentName] = useState('');
     const { studentId } = useParams();
 
@@ -17,6 +18,12 @@ const DashboardEstudiante = () => {
                 );
                 const data = await response.json();
                 setCourses(data);
+
+                const responseGroups = await fetch(
+                    `http://localhost:3001/api/grupos-estudiante/${studentId}`
+                );
+                const dataGroups = await responseGroups.json();
+                setGroups(dataGroups);
 
                 // Obtener el nombre del estudiante y establecerlo en el estado
                 const studentResponse = await fetch(`http://localhost:3001/api/estudiantes/${studentId}`);
@@ -43,9 +50,11 @@ const DashboardEstudiante = () => {
             <hr className="divider" />
             <div className="course-grid">
                 {courses.map((course, index) => (
-                    <CourseCard key={index} course={course} studentId={studentId} />
+                    // Pasa el ID del grupo como una propiedad llamada grupoId
+                    <CourseCard key={index} course={course} studentId={studentId} grupoId={course.id_grupo}/>
                 ))}
             </div>
+
         </div>
     );
 };

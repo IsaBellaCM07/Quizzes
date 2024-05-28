@@ -1,37 +1,37 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
-import QuizCard from './QuizCard'; // Importa el componente QuizCard
 import '../styles/InicioEstudianteStyle.css';
+import QuizCard from "./QuizCard.jsx";
+import QuizCardExamenes from "./QuizCardExamenes.jsx";
 
 const InicioEstudiante = () => {
-    const { studentId } = useParams();
+    const { studentId, groupId } = useParams();
     const [studentName, setStudentName] = useState('');
-    const [exams, setExams] = useState([]);
     const [presentedExams, setPresentedExams] = useState([]);
+    const [missingExams, setMissingExams] = useState([]);
     const [noExamsAvailable, setNoExamsAvailable] = useState(false);
 
     useEffect(() => {
         const fetchStudentData = async () => {
             try {
+                // Obtener datos del estudiante
                 const studentResponse = await fetch(`http://localhost:3001/api/estudiantes/${studentId}`);
                 const studentData = await studentResponse.json();
                 setStudentName(studentData.NOMBRE);
 
-                const examsResponse = await fetch(`http://localhost:3001/api/examsDis/${studentId}`);
-                const examsData = await examsResponse.json();
-                setExams(examsData);
-
-                const presentedExamsResponse = await fetch(`http://localhost:3001/api/examsPres/${studentId}`);
+                // Obtener exámenes presentados
+                const presentedExamsResponse = await fetch(`http://localhost:3001/api/examsPres/${studentId}/${groupId}`);
                 const presentedExamsData = await presentedExamsResponse.json();
                 setPresentedExams(presentedExamsData);
 
-                // Si no hay exámenes disponibles, mostrar el aviso
-                if (examsData.length === 0) {
-                    setNoExamsAvailable(true);
-                } else {
-                    setNoExamsAvailable(false);
-                }
+                // Obtener exámenes faltantes
+                const missingExamsResponse = await fetch(`http://localhost:3001/api/missing-exams/${studentId}/${groupId}`);
+                const missingExamsData = await missingExamsResponse.json();
+
+                setMissingExams(missingExamsData.missingExams);
+                // Verificar si no hay exámenes disponibles
+                setNoExamsAvailable(missingExamsData.length === 0 && presentedExamsData.length === 0);
 
             } catch (error) {
                 console.error('Error al obtener datos del estudiante:', error);
@@ -39,7 +39,7 @@ const InicioEstudiante = () => {
         };
 
         fetchStudentData();
-    }, [studentId]);
+    }, [studentId, groupId]);
 
     return (
         <div className="inicio-estudiante font">
@@ -63,23 +63,27 @@ const InicioEstudiante = () => {
                             </div>
                         ) : (
                             presentedExams.map((exam, index) => (
-                                <QuizCard key={index} quiz={exam} studentId={studentId} type="presented" />
+                                <QuizCard key={index} quiz={exam} studentId={studentId} groupId={groupId}
+                                          type="presented"/>
                             ))
                         )}
                     </div>
                 </div>
                 <div className="vertical-line"></div>
                 <div className="section available-exams">
-                    <h2>Exámenes Disponibles</h2>
+                    <h2>Exámenes Pendientes</h2>
                     <div className="course-grid">
-                        {noExamsAvailable ? (
+                        {missingExams.length === 0 ? (
                             <div className="no-exams-message-box">
-                                <div className="no-exams-message">¡Estás al día!</div>
+                                <div className="no-exams-message">No hay exámenes pendientes.</div>
                             </div>
                         ) : (
-                            exams.map((exam, index) => (
-                                <QuizCard key={index} quiz={exam} studentId={studentId} type="available" />
-                            ))
+                            // Recorrer la matriz missingExams
+                            <>
+                                {missingExams.map((exam, index) => (
+                                    <QuizCardExamenes key={index} studentId={studentId} groupId={groupId} exam={exam}/>
+                                ))}
+                            </>
                         )}
                     </div>
                 </div>

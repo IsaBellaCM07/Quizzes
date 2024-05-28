@@ -2,14 +2,14 @@
 import { useNavigate } from 'react-router-dom';
 import '../styles/QuizCardStyle.css';
 
-const QuizCard = ({ quiz, studentId, type }) => {
+const QuizCard = ({ quiz, studentId, type, groupId }) => {
     const navigate = useNavigate();
 
     const handleQuizClick = () => {
         if (type === 'presented') {
-            navigate(`/informacionExamen/${studentId}`);
+            navigate(`/informacionExamen/${studentId}/${groupId}`);
         } else {
-            navigate(`/infoPreExamen/${studentId}/${quiz.ID_EXAMEN}`);
+            navigate(`/infoPreExamen/${studentId}/${groupId}/${quiz.ID_EXAMEN}`);
         }
     };
 

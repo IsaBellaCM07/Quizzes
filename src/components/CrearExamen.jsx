@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
 import AgregarPreguntas from './AgregarPreguntas'; // Importa el componente AgregarPreguntas
 import { FiArrowLeft } from 'react-icons/fi';
+import DecisionPreguntas from './DecisionPreguntas.jsx'
+import EscogerPreguntas from "./EscogerPreguntas.jsx";
 import '../styles/CrearExamenStyle.css';
 
 const CrearExamen = ({ teacherId, cursoId }) => {
-    const [mostrarFormulario, setMostrarFormulario] = useState(true); // Estado para controlar la visibilidad del formulario
+    const [mostrarFormulario, setMostrarFormulario] = useState(true);
+    const [mostrarPreguntas, setMostrarPreguntas] = useState('Decision');// Estado para controlar la visibilidad del formulario
     const [examName, setExamName] = useState('');
     const [description, setDescription] = useState('');
-    const [category, setCategory] = useState('');
     const [time, setTime] = useState('');
-    const [totalQuestions, setTotalQuestions] = useState('');
-    const [aleatoryQ, setAleatoryQ] = useState('');
+    const [totalQuestions, setTotalQuestions] = useState(0);
+    const [aleatoryQ, setAleatoryQ] = useState(0);
     const [availabilityDate, setAvailabilityDate] = useState('');
     const [availabilityTime, setAvailabilityTime] = useState('');
     const [theme, setTheme] = useState('');
@@ -29,6 +31,10 @@ const CrearExamen = ({ teacherId, cursoId }) => {
         };
         fetchData();
     }, []);
+
+    const handlePreguntas = (decision) => {
+        setMostrarPreguntas(decision);
+    }
 
     const handleExamCreation = async (event) => {
 
@@ -61,7 +67,7 @@ const CrearExamen = ({ teacherId, cursoId }) => {
             num_preguntas_aleatorias: aleatoryQ,
             fecha_y_hora_disponible: fechaDisp, // Formato de fecha
             tema_titulo: theme,
-            docent_id_doncente: teacherId
+            docente_id_docente: teacherId
         };
         try {
             const response = await fetch('http://localhost:3001/api/examenes/crear', {
@@ -75,6 +81,8 @@ const CrearExamen = ({ teacherId, cursoId }) => {
             if (response.ok) {
                 const result = await response.json();
                 console.log('Examen creado:', result);
+                setMostrarFormulario(false);
+                setMostrarPreguntas("Decision");
                 // Aquí puedes añadir lógica adicional, como limpiar el formulario o mostrar un mensaje de éxito.
             } else {
                 console.error('Error al crear el examen:', response.statusText);
@@ -85,7 +93,7 @@ const CrearExamen = ({ teacherId, cursoId }) => {
             // Aquí puedes añadir lógica adicional para manejar errores de red, como mostrar un mensaje de error.
         }
         event.preventDefault();
-        //setMostrarFormulario(false); // Ocultar el formulario al presionar el botón de crear examen
+        // Ocultar el formulario al presionar el botón de crear examen
     };
 
     return (
@@ -189,10 +197,16 @@ const CrearExamen = ({ teacherId, cursoId }) => {
                 </div>
             ) : (
                 <>
-                    <div className="back-arrow-Agg" onClick={() => setMostrarFormulario(true)}>
+                    <div className="back-arrow-Agg" onClick={() => setMostrarPreguntas("Decision")}>
                         <FiArrowLeft/>
                     </div>
-                    <AgregarPreguntas teacherId={teacherId} cursoId={cursoId}/>
+                    {mostrarPreguntas == 'Decision' ? (
+                        <DecisionPreguntas onDecision = {handlePreguntas}/>
+                    ) : mostrarPreguntas == 'Crear' ? (
+                        <AgregarPreguntas teacherId={teacherId} cursoId={cursoId}/>
+                    ) : (
+                        <EscogerPreguntas tema={theme} num_preguntas={aleatoryQ} nombre={examName}/>
+                    )}
                 </>
             )}
         </div>

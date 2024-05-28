@@ -23,10 +23,10 @@ function App() {
                     <Route path="/loginEstudiante" element={<LoginEstudiante />} />
                     <Route path="/loginDocente" element={<LoginDocente />} />
                     <Route path="/dashboardEstudiante/:studentId" element={<DashboardEstudiante />} />
-                    <Route path="/inicioEstudiante/:studentId" element={<InicioEstudiante />} />
-                    <Route path="/informacionExamen/:studentId" element={<DetalleExamen />} />
-                    <Route path="/infoPreExamen/:studentId/:examenId" element={<InfoPreExamen />} />
-                    <Route path="/presentarExamen/:studentId/:examenId" element={<PresentarExamen />} />
+                    <Route path="/inicioEstudiante/:studentId/:groupId" element={<InicioEstudiante />} />
+                    <Route path="/informacionExamen/:studentId/:groupId" element={<DetalleExamen />} />
+                    <Route path="/infoPreExamen/:studentId/:groupId/:examenId" element={<InfoPreExamen />} />
+                    <Route path="/presentarExamen/:examenId/:presId" element={<PresentarExamen />} />
                     <Route path="/dashboardDocente/:teacherId" element={<DashboardDocente />} />
                     <Route path="/inicioDocente/:teacherId/:cursoId" element={<InicioDocente />} />
                     <Route path="/crearExamen/:teacherId/:cursoId" element={<CrearExamen />} />

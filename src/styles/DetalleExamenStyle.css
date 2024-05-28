@@ -1,5 +1,5 @@
 .detalle-examen-container {
-    max-width: 400px;
+    max-width: 600px; /* Aumenta el ancho máximo para adaptarse mejor al contenido */
     margin: 20px auto;
     margin-top: 130px;
     padding: 20px;
@@ -13,6 +13,7 @@
 .detalle-examen-container h1 {
     text-align: center;
     margin-bottom: 20px;
+    color: darkblue; /* Cambia el color del título */
 }
 
 .exam-section-detail {
@@ -29,26 +30,20 @@
 }
 
 .text-container-detail {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to right, darkblue, lightseagreen);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    text-align: center; /* Centra el contenido */
     margin-bottom: 20px;
 }
 
 .back-arrow-container-detail {
     position: absolute;
     cursor: pointer;
+    top: 20px; /* Posiciona el botón hacia arriba */
+    left: 20px; /* Posiciona el botón hacia la izquierda */
 }
 
 .back-arrow-detail {
     cursor: pointer;
     color: darkblue;
-    margin-left: -10px;
-    margin-top: -10px;
     font-size: 24px;
 }
 

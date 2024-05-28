@@ -4,82 +4,96 @@ import { FiArrowLeft } from 'react-icons/fi';
 import '../styles/InfoPreExamenStyle.css';
 
 const InfoPreExamen = () => {
-    const { studentId, examenId } = useParams();
+    const { studentId, examenId, groupId } = useParams();
     const navigate = useNavigate();
     const [examInfo, setExamInfo] = useState(null);
-    const [exams, setExams] = useState([]);
 
     useEffect(() => {
         const fetchExamData = async () => {
             try {
-                const examResponse = await fetch(`http://localhost:3001/api/examsDis/${studentId}`);
+                const examResponse = await fetch(`http://localhost:3001/api/examenes/${examenId}`);
                 const examData = await examResponse.json();
-                setExams(examData);
 
                 if (!examData || examData.length === 0) {
                     throw new Error('No se encontraron datos del examen');
                 }
 
-                const examTitle = examData.map((examData) => examData.NOMBRE);
-                const teacher = examData.map((examData) => `${examData.NOMBRE_1} ${examData.APELLIDO}`);
-                const questions = examData.map((examData) => examData.NUM_PREGUNTAS_ALEATORIAS);
-                const time = examData.map((examData) => examData.TIEMPO_1);
+                const examTitle = examData[0].nombre;
+                const message = `Apreciados estudiantes, en el siguiente cuestionario se establecen preguntas relacionadas con la temática vista en todo el desarrollo de la unidad. Tiene un total de ${examData[0].num_preguntas_aleatorias} preguntas, dispuestas para que pueda navegar entre ellas.`;
+                const duration = `${examData[0].tiempo} minutos`;
+                const attempts = 1;
 
                 const examInfo = {
                     title: examTitle,
-                    message: `Apreciados estudiantes, en el siguiente cuestionario se establecen preguntas relacionadas con la temática vista en todo el desarrollo de la unidad. Tiene un total de ${questions} preguntas, dispuestas para que pueda navegar entre ellas.`,
-                    duration: `${time} minutos`,
-                    attempts: 1,
-                    teacher: teacher + ".",
+                    message: message,
+                    duration: duration,
+                    attempts: attempts,
                 };
+
                 setExamInfo(examInfo);
             } catch (error) {
                 console.error('Error al obtener los datos del examen:', error);
             }
         };
+
         fetchExamData();
-    }, [studentId,examenId]);
+    }, [studentId, examenId, groupId]);
+
+    const handleBackClick = () => {
+        navigate(`/inicioEstudiante/${studentId}/${groupId}`);
+    };
+
+    const handleStartQuizClick = async () => {
+        try {
+            const response = await fetch('http://localhost:3001/api/registrar-presentacion', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    studentId: studentId,
+                    examenId: examenId,
+                    groupId: groupId,
+                }),
+            });
+
+            const data = await response.json();
+            console.log(data)
+
+            if (!response.ok) {
+                throw new Error('Error al registrar la presentación del examen');
+            }
+
+            navigate(`/presentarExamen/${examenId}`)
+        } catch (error) {
+            console.error('Error al iniciar el cuestionario:', error);
+        }
+    };
 
     if (!examInfo) {
         return <div>Loading...</div>;
     }
 
-    const handleBackClick = () => {
-        navigate(`/inicioEstudiante/${studentId}`);
-    };
-
-    const handleStartQuizClick = () => {
-
-        navigate(`/presentarExamen/${studentId}/${examenId}`);
-    };
-
     return (
         <div className="dashboard-container">
             <div className="back-arrow2-container">
-                <FiArrowLeft className="back-arrow2" onClick={handleBackClick}/>
+                <FiArrowLeft className="back-arrow2" onClick={handleBackClick} />
             </div>
             <div className="text-container">
                 <h1>{examInfo.title}</h1>
             </div>
 
             <div className="exam-info">
-                <p> {examInfo.message} <br/></p>
-                <p> Límite de tiempo: {examInfo.duration} <br/></p>
-                <p> Intentos permitidos: {examInfo.attempts} <br/></p>
-                <p> Atentamente, <br/></p>
-                <p> {examInfo.teacher} <br/></p>
+                <p>{examInfo.message}</p>
+                <p>Límite de tiempo: {examInfo.duration}</p>
+                <p>Intentos permitidos: {examInfo.attempts}</p>
             </div>
-            <p>
-                {exams.map((exam, index) => (
-                    <div key={index}>
-                        <button
-                            className="boton-examen"
-                            onClick={() => handleStartQuizClick()}>
-                            Iniciar cuestionario
-                        </button>
-                    </div>
-                ))}
-            </p>
+
+            <div>
+                <button className="boton-examen" onClick={handleStartQuizClick}>
+                    Iniciar cuestionario
+                </button>
+            </div>
         </div>
     );
 };

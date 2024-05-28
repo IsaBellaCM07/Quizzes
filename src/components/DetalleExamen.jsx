@@ -1,43 +1,50 @@
-import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
-import '../styles/DetalleExamenStyle.css'; // Importa el archivo CSS
+import {FiArrowLeft} from "react-icons/fi";
+import {useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
 
 const DetalleExamen = () => {
-    const { studentId } = useParams();
+    const { studentId, groupId } = useParams();
     const navigate = useNavigate();
-    const [exam, setExam] = useState(null);
+    const [exams, setExams] = useState([]);
 
     useEffect(() => {
         const fetchExamData = async () => {
             try {
-                const examResponse = await fetch(`http://localhost:3001/api/examsPres/${studentId}`);
+                const examResponse = await fetch(`http://localhost:3001/api/examsPres/${studentId}/${groupId}`);
                 const examData = await examResponse.json();
-                setExam(examData);
+                // Filtra los resultados para mostrar solo un registro por examen
+                const uniqueExams = examData.reduce((unique, current) => {
+                    const index = unique.findIndex((exam) => exam.ID_EXAMEN === current.ID_EXAMEN);
+                    if (index === -1) {
+                        unique.push(current);
+                    }
+                    return unique;
+                }, []);
+                setExams(uniqueExams);
             } catch (error) {
                 console.error('Error al obtener los datos del examen:', error);
             }
         };
 
         fetchExamData();
-    }, [studentId]);
+    }, [studentId, groupId]);
 
-    if (!exam) {
+    if (exams.length === 0) {
         return <div>Loading...</div>;
     }
 
     return (
         <div className="detalle-examen-container">
             <div className="back-arrow-container-detail">
-                <FiArrowLeft className="back-arrow-detail" onClick={() => navigate(`/inicioEstudiante/${studentId}`)} />
+                <FiArrowLeft className="back-arrow-detail" onClick={() => navigate(`/inicioEstudiante/${studentId}/${groupId}`)} />
             </div>
             <div className="text-container-detail">
-                <h1>Detalles del Examen</h1>
+                <h1>Detalle del Examen</h1>
             </div>
-            {exam.map((examData, index) => (
+            {exams.map((examData, index) => (
                 <div key={index} className="exam-section-detail">
                     <h2 className="text-titles-detail">Docente</h2>
-                    <p><strong>Nombre:</strong> {examData.NOMBRE_1} {examData.APELLIDO}</p>
+                    <p><strong>Nombre:</strong> {examData.DOCENTE_NOMBRE} {examData.DOCENTE_APELLIDO}</p>
 
                     <h2 className="text-titles-detail">Información</h2>
                     <p><strong>Nombre:</strong> {examData.NOMBRE}</p>
@@ -49,5 +56,4 @@ const DetalleExamen = () => {
         </div>
     );
 };
-
 export default DetalleExamen;
